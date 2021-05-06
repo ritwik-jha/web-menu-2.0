@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>AWS</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href={{ url_for('static', filename='bootstrap.min.css') }}>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    
+    <body style="background-color:white">
+    <div class="container">
+        <div class="page-header text-center bg-primary text-white h-20">
+            <h1>AWS MENU</h1>
+        </div>
+    </div>
+    <div class='d-flex flex-column'>
+    <form method='GET' action='/aws-output' target='_blank'>
+        
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option name='option' value="1">One</option>
+                <option name='option' value="2">Two</option>
+                <option name='option' value="3">Three</option>
+            </select>
+        
+        
+        <button type='submit'>submit</button>
+        
+    </form>
+    </div>
+    </body>
+</html>
