@@ -1,1 +1,47 @@
-<h1>LINUX</h1>
+<html>
+    <head>
+        <title>LINUX</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href={{ url_for('static', filename='bootstrap.min.css') }}>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    
+    <body style="background-color:white">
+    
+    <div class="container">
+        <div class="page-header text-center bg-success text-white h-20">
+            <h1>LINUX MENU</h1>
+        </div>
+    </div>
+    
+
+    <div class='h-25 container text-center mt-5'>
+    <h1 class='mx-5'>What do you want to do in Linux?</h1>
+    </div>
+
+    <div class='row'>
+    <div class='col-sm-4 mt-5'></div>
+    <div class='col-sm-4 mt-5'>
+        <div class='container px-5 py-5'>
+            <form method='GET' action='/linux-output' target='_blank'>
+        
+                <select class="form-select" name='option' aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option name='option' value="1">One</option>
+                    <option name='option' value="2">Two</option>
+                    <option name='option' value="3">Three</option>
+                </select>
+        
+        
+
+                <button class='btn btn-dark mx-5 my-5' type='submit'>submit</button>
+        
+            </form>
+        </div>
+    </div>
+    <div class='col-sm-4 mt-5'></div>
+
+    </body>
+</html>
