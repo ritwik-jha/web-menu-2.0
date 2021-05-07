@@ -44,6 +44,7 @@ def hadoop_output():
     elif x=='6':
         output = hadoop_fs_list()
         return render_template('hadoop/default-op.html', op=output, title='HADOOP OUTPUT')
-        
+    elif x=='7':
+        return render_template('hadoop/op-input.html', input=3, input1=['name','roll','class'])
 
 app.run(debug=True)
