@@ -45,6 +45,7 @@ def hadoop_output():
         output = hadoop_fs_list()
         return render_template('hadoop/default-op.html', op=output, title='HADOOP OUTPUT')
     elif x=='7':
-        return render_template('hadoop/op-input.html', input=3, input1=['name','roll','class'])
+        return render_template('hadoop/op-input.html', input=2, input1=['FILE PATH IN LOCAL SYSTEM','DESIGNATION IN HDFS CLUSTER'], title='Details')
+
 
 app.run(debug=True)

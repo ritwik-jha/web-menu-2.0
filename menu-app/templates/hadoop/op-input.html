@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>WELCOME</title>
+        <title>{{title}}</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href={{ url_for('static', filename='bootstrap.min.css') }}>
@@ -27,8 +27,8 @@
                     <form method=['GET'] action='/'>
                         {% for i in range(input) %}
                             <div class="form-group my-2">
-                                <label for={{input1[i]}}>{{input1[i]}}</label>
-                                <input type="text" class="form-control" name={{input[i]}} id={{input1[i]}}>
+                                <label for={{input[i]}}>{{input1[i]}}</label>
+                                <input type="text" class="form-control" name={{input[i]}} id={{input[i]}}>
                             </div>
                         {% endfor %}
                         <button type="submit" class="btn btn-primary my-5">Submit</button>
