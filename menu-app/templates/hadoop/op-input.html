@@ -24,13 +24,14 @@
             <div class='col-sm-4'>
                 <div class='h-25 container text-center mt-5'></div>
                 <div>
-                    <form method=['GET'] action='/'>
+                    <form method=['GET'] action='/hadoop-dynamic-op'>
                         {% for i in range(input) %}
                             <div class="form-group my-2">
-                                <label for={{input[i]}}>{{input1[i]}}</label>
-                                <input type="text" class="form-control" name={{input[i]}} id={{input[i]}}>
+                                <label for={{input2[i]}}>{{input1[i]}}</label>
+                                <input type="text" class="form-control" name={{input2[i]}}>
                             </div>
                         {% endfor %}
+                        <input type="text" readonly class="form-control-plaintext" value={{x}} name='x'>
                         <button type="submit" class="btn btn-primary my-5">Submit</button>
                     </form>
                 </div>

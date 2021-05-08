@@ -45,7 +45,42 @@ def hadoop_output():
         output = hadoop_fs_list()
         return render_template('hadoop/default-op.html', op=output, title='HADOOP OUTPUT')
     elif x=='7':
-        return render_template('hadoop/op-input.html', input=2, input1=['FILE PATH IN LOCAL SYSTEM','DESIGNATION IN HDFS CLUSTER'], title='Details')
+        return render_template('hadoop/op-input.html',x='7', input=2, input1=['FILE PATH IN LOCAL SYSTEM','DESIGNATION IN HDFS CLUSTER'], input2=['path','designation'], title='Details')
+    elif x=='8':
+        return render_template('hadoop/op-input.html',x='8', input=1, input1=['FILE PATH IN HDFS CLUSTER'], input2=['path'], title='Details')
+    elif x=='9':
+        return render_template('hadoop/op-input.html',x='9', input=1, input1=['FILE PATH IN HDFS CLUSTER'], input2=['path'], title='Details')
+    elif x=='10':
+        return render_template('hadoop/op-input.html',x='10', input=3, input1=['BLOCK SIZE','FILE PATH IN LOCAL SYSTEM','DESIGNATION IN HDFS CLUSTER'], input2=['block','path','designation'], title='Details')
+    elif x=='11':
+        return render_template('hadoop/op-input.html',x='11', input=1, input1=['FILE NAME'], input2=['name'], title='Details')
 
+
+@app.route('/hadoop-dynamic-op', methods=['GET'])
+def hadoop_dynamic():
+    x = request.args.get('x')
+    if x=='7':
+        path = request.args.get('path')
+        desig = request.args.get('designation')
+        output = hadoop_put(path, desig)
+        return render_template('hadoop/default-op.html', op=output, title='OUTPUT')
+    elif x=='8':
+        path = request.args.get('path')
+        output = hadoop_rm(path)
+        return render_template('hadoop/default-op.html', op=output, title='OUTPUT')
+    elif x=='9':
+        path = request.args.get('path')
+        output = hadoop_cat(path)
+        return render_template('hadoop/default-op.html', op=output, title='OUTPUT')
+    elif x=='10':
+        block = request.args.get('block')
+        path = request.args.get('path')
+        desig = request.args.get('designation')
+        output = hadoop_put_block_size(block, path, desig)
+        return render_template('hadoop/default-op.html', op=output, title='OUTPUT')
+    elif x=='11':
+        name = request.args.get('name')
+        output = hadoop_touch(name)
+        return render_template('hadoop/default-op.html', op=output, title='OUTPUT')
 
 app.run(debug=True)
