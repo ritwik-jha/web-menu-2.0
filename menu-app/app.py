@@ -2,6 +2,7 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from hadoop import *
+from aws import *
 
 app = Flask('menu')
 app.static_folder = 'static'
@@ -82,5 +83,45 @@ def hadoop_dynamic():
         name = request.args.get('name')
         output = hadoop_touch(name)
         return render_template('hadoop/default-op.html', op=output, title='OUTPUT')
+
+@app.route('/aws-static-op', methods=['GET'])
+def aws_static_op():
+    option = request.args.get('option')
+    if option=='1':
+        return render_template('aws/op-input.html', x='1', input=1, input1=['KEY NAME'], input2=['name'])
+    elif option=='2':
+        return render_template('aws/op-input.html', x='2', input=2, input1=['SECURITY GROUP NAME', 'DESCRIPTION'], input2=['name','desc'])
+    elif option=='3':
+        return render_template('aws/op-input.html', x='3', input=6, input1=['AMI ID','INSTANCE TYPE','COUNT','SUBNET ID','KEY','SECURITY GROUP ID'], input2=['ami','type_','count','subnet','key','sgid'], title='Details')
+    elif option=='4':
+        return render_template('aws/op-input.html', x='4', input=2, input1=['AVAILABILITY ZONE', 'SIZE'], input2=['zone','size'], title='Detail')
+    elif option=='5':
+        return render_template('aws/op-input.html', x='5', input=2, input1=['INSTANCE ID', 'VOLUME ID'], input2=['ins_id','vol_id'], title='Details')
+    elif option=='6':
+        return render_template('aws/op-input.html', x='6', input=2, input1=['BUCKET NAME', 'REGION'], input2=['buc_name', 'region'], title='Details')
+    elif option=='7':
+        return 'Under progress'
+
+@app.route('/aws-dynamic-op', methods=['GET'])
+def aws_dynamic_op():
+    x = request.args.get('x')
+    if x=='1':
+        name = request.args.get('name')
+        output = aws_keypair(name)
+        return render_template('aws/default-op.html', op=output, title='OUTPUT')
+    elif x=='2':
+        name = request.args.get('name')
+        desc = request.args.get('desc')
+        output = aws_sg(name, desc)
+        return render_template('aws/default-op.html', op=output, title='OUTPUT')
+    elif x=='3':
+        ami = request.args.get('ami')
+        type_ = request.args.get('type_')
+        count = request.args.get('count')
+        subnet = request.args.get('subnet')
+        key = request.args.get('key')
+        sgid = request.args.get('sgid')
+        output = aws_instance(ami, type_, count, subnet, key, sgid)
+        return render_template('aws/default-op.html', op=output, title='OUTPUT')
 
 app.run(debug=True)
