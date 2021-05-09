@@ -123,5 +123,20 @@ def aws_dynamic_op():
         sgid = request.args.get('sgid')
         output = aws_instance(ami, type_, count, subnet, key, sgid)
         return render_template('aws/default-op.html', op=output, title='OUTPUT')
-
+    elif x=='4':
+        zone = request.args.get('zone')
+        size = request.args.get('size')
+        output = aws_ebs_vol(zone, size)
+        return render_template('aws/default-op.html', op=output, title='OUTPUT')
+    elif x=='5':
+        instance_id = request.args.get('ins_id')
+        vol_id = request.args.get('vol_id')
+        output = aws_ebs_attach(instance_id, vol_id)
+        return render_template('aws/default-op.html', op=output, title='OUTPUT')
+    elif x=='6':
+        name = request.args.get('buc_name')
+        region = request.args.get('region')
+        output = aws_s3_bucket(name, region)
+        return render_template('aws/default-op.html', op=output, title='OUTPUT')
+        
 app.run(debug=True)
