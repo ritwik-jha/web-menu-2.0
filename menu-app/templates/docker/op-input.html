@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>{{title}}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href={{ url_for('static', filename='bootstrap.min.css') }}>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    
+    <body style="background-color:white">
+
+    <div class="container">
+        <div class="page-header text-center bg-info text-white h-20">
+            <h1>PLEASE FILL THE DETAILS</h1>
+        </div>
+    </div>
+
+    <div class='container'>
+        <div class='row'>
+            <div class='col-sm-4'>
+                
+            </div>
+            <div class='col-sm-4'>
+                <div class='h-25 container text-center mt-5'></div>
+                <div>
+                    <form method=['GET'] action='/docker-dynamic-op'>
+                        {% for i in range(input) %}
+                            <div class="form-group my-2">
+                                <label for={{input2[i]}}>{{input1[i]}}</label>
+                                <input type="text" class="form-control" name={{input2[i]}}>
+                            </div>
+                        {% endfor %}
+                        <input type="text" readonly class="form-control-plaintext" value={{x}} name='x'>
+                        <button type="submit" class="btn btn-primary my-5">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class='col-sm-4'>
+                
+            </div>
+        </div>
+    </div>

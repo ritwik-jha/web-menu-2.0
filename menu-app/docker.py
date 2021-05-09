@@ -1,7 +1,7 @@
 import subprocess as sp
 
 def doc_version():
-    sp.getoutput('docker version')
+    return sp.getoutput('docker version')
 
 def docker_run(image,name):
     return sp.getoutput('docker run -dit --name {} {} '.format(name,image))
