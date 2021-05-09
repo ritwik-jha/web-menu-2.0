@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title> {{ title }} </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href={{ url_for('static', filename='bootstrap.min.css') }}>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    
+    <body style="background-color:white">
+
+    <div class='container'>
+        <div class='container'>
+            <div class="page-header text-center bg-info text-white h-20">
+                <h1> {{ title }} </h1>
+            </div>
+        </div>
+    </div>
+    <div class='h-25 container text-center mt-5'>
+    <h1 class='mx-5'>Output:</h1>
+    </div>
+    <div class='container col-sm-12 text-center'>
+        <h3> <pre>{{ op }}</pre> </h3>
+    </div>
+
+    </body>
+    </html>

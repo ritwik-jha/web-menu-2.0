@@ -197,7 +197,93 @@ def docker_dynamic_op():
         name = request.args.get('name')
         output = docker_rm(name)
         return render_template('docker/default-op.html', op=output, title='OUTPUT')
-        
 
+
+@app.route('/linux-static-op', methods=['GET'])
+def linux_static():
+    y = request.args.get('option')
+    if y=='1':
+        return render_template('linux/op-input.html', x='1', input=1, input1=['DIRECTORY NAME'], input2=['name'], title='Details')
+    elif y=='2':
+        output = file_list()
+        return render_template('linux/default-op.html', op=output, title='OUTPUT')
+    elif y=='3':
+        return render_template('linux/op-input.html', x='3', input=1, input1=['FILE NAME'], input2=['name'], title='Details')
+    elif y=='4':
+        return render_template('linux/op-input.html', x='4', input=1, input1=['USER NAME'], input2=['name'], title='Details')
+    elif y=='5':
+        return 'recheck'
+    elif y=='6':
+        output = ram_usage()
+        return render_template('linux/default-op.html', op=output, title='OUTPUT')
+    elif y=='7':
+        output = show_hd()
+        return render_template('linux/default-op.html', op=output, title='OUTPUT')
+    elif y=='8':
+        return render_template('linux/op-input.html', x='8', input=1, input1=['PACKAGE NAME'], input2=['name'], title='Details')
+    elif y=='9':
+        return render_template('linux/op-input.html', x='9', input=1, input1=['PACKAGE NAME'], input2=['name'], title='Details')
+    elif y=='10':
+        output = ip()
+        return render_template('linux/default-op.html', op=output, title='OUTPUT')
+    elif y=='11':
+        output = java_process()
+        return render_template('linux/default-op.html', op=output, title='OUTPUT')
+    elif y=='12':
+        output = cpu_info()
+        return render_template('linux/default-op.html', op=output, title='OUTPUT')
+    elif y=='13':
+        output = running_processes()
+        return render_template('linux/default-op.html', op=output, title='OUTPUT')
+    elif y=='14':
+        output = uptime()
+        return render_template('linux/default-op.html', op=output, title='OUTPUT')
+    elif y=='15':
+        outupt = ram_clear()
+        return render_template('linux/default-op.html', op=output, title='OUTPUT')
+    elif y=='16':
+        return render_template('linux/op-input.html', x='16', input=1, input1=['PACKAGE NAME'], input2=['name'], title='Details')
+    elif y=='17':
+        return render_template('linux/op-input.html', x='17', input=1, input1=['IP ADDRESS OF OTHER SYSTEM'], input2=['ip'], title='Details')
+    elif y=='18':
+        return render_template('linux/op-input.html', x='18', input=2, input1=['USERNAME', 'PASSWORD'], input2=['username','command'], title='Details')
+
+
+@app.route('/linux-dynamic-op', methods=['GET'])
+def linux_dynamic_op():
+    x = request.args.get('x')
+    if x=='1':
+        name = request.args.get('name')
+        output = dir_create(name)
+        return render_template('linux/default-op.html', op=output, title='OUTPUT')
+    elif x=='3':
+        name = request.args.get('name')
+        output = file_create(name)
+        return render_template('linux/default-op.html', op=output, title='OUTPUT')
+    elif x=='4':
+        name = request.args.get('name')
+        output = user_add(name)
+        return render_template('linux/default-op.html', op=output, title='OUTPUT')
+    elif x=='8':
+        name = request.args.get('name')
+        output = package_check(name)
+        return render_template('linux/default-op.html', op=output, title='OUTPUT')
+    elif x=='9':
+        name = request.args.get('name')
+        output = package_rm(name)
+        return render_template('linux/default-op.html', op=output, title='OUTPUT')
+    elif x=='16':
+        name = request.args.get('name')
+        output = yum_whatprovides(name)
+        return render_template('linux/default-op.html', op=output, title='OUTPUT')
+    elif x=='17':
+        ip = request.args.get('ip')
+        output = ping(ip)
+        return render_template('linux/default-op.html', op=output, title='OUTPUT')
+    elif x=='18':
+        command = request.args.get('command')
+        username = request.args.get('username')
+        output = useradd_command(command, username)
+        return render_template('linux/default-op.html', op=output, title='OUTPUT')
 
 app.run(debug=True)
