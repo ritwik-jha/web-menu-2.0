@@ -14,6 +14,7 @@ The command is executed on the server and the output is show on the browser itse
 4. This will start the flask server in local host.
 5. And now the menu is ready to use. 
 
+**Checkout the demo video in the repo**
 ## Highlights
 
 ### Home page
